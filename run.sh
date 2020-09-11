@@ -10,6 +10,10 @@ kill_devpi() {
 }
 trap kill_devpi EXIT
 
+if [[ $initialize = yes ]]; then
+   devpi-init
+fi
+
 # For some reason, killing tail during EXIT trap function triggers an
 # "uninitialized stack frame" bug in glibc, so kill tail when handling INT or
 # TERM signal.
